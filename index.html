@@ -1,0 +1,627 @@
+<!doctype html>  
+<!--[if IE 6 ]><html lang="en-us" class="ie6"> <![endif]-->
+<!--[if IE 7 ]><html lang="en-us" class="ie7"> <![endif]-->
+<!--[if IE 8 ]><html lang="en-us" class="ie8"> <![endif]-->
+<!--[if (gt IE 7)|!(IE)]><!-->
+<html lang="en-us"><!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	
+	<title>Just Print Services API documentation</title>
+	
+	<meta name="author" content="Systway">
+	<meta name="copyright" content="Systway">
+
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,600italic,700' rel='stylesheet' type='text/css'>
+	
+	<link rel="stylesheet" href="css/documenter_style.css" media="all">
+	
+	
+	<link rel="stylesheet" href="css/shDocumenter.css" media="screen">
+	
+	
+</head>
+<body>
+	<div id="documenter_sidebar">
+		<a href="#overview" id="documenter_logo"></a>
+		<ol id="documenter_nav">
+			<li><a class="current" href="#overview">Overview</a></li>
+			<li><a href="#start">Getting Started</a></li>
+			<li><a href="#auth">Authentication</a></li>
+			<li><a href="#data">Getting Data</a></li>
+			<li><a href="#listings">Get Listings</a></li>
+			<li><a href="#agents">Get Agents</a></li>
+			<li><a href="#sorting">Sorting</a></li>			
+			<li><a href="#return_type">Return Type</a></li>
+			<li><a href="#example">Example Call</a></li>
+
+		</ol>
+	</div>
+
+	<div id="documenter_content">
+		
+		<!-- API document Overview Section -->
+		<section id="overview">
+
+			<h1>Just Print Services API Documentation V1</h1>
+			<h3>To access Just Print Services API with Specific Parameters</h3>
+			<hr>
+				<ul>
+					<li>Created: 15/03/2018</li>
+					<li>Latest Update: 22/03/2018</li>
+					<li>Version: 1.0</li>
+					<li>By: <a href="http://systway.com" target="_blank" title="">Systway</a></li>
+
+		</section>
+
+		<!-- /API document Overview Section -->
+
+
+		<!-- API document Start Section -->
+		<section id="start">
+			<h3>Getting Started</h3>
+
+			<hr class="notop">
+				<p>Just Print Services RestFull API will provide JSON data based on passing parameters and autheticated by the access token. </p>
+				<p>
+				<b>API END POINT(s) Example: </b>
+					<p><pre> Products: http://manage.justtradeservices.co.uk/api/{v1}/get-products</pre></p> 
+					<p><pre> Users: http://manage.justtradeservices.co.uk/api/{v1}/get-users</pre></p>
+					<p><pre> Single Product: http://manage.justtradeservices.co.uk/api/{v1}/get-product/{id}</pre></p>
+				</p>
+
+		</section>
+		<!-- /API document Start Section -->
+
+
+
+		<!-- API document Auth Section -->
+		<section id="auth">
+			<h3>API Authetication</h3>
+
+			<hr class="notop">
+				<p> API must needs to be authenticated with the access token. A required parameter <span class="block"> access_token </span> must be valid. </p>
+				
+				<table class="rbtable">
+						<thead>
+							<tr>
+								<th>Parameter</th>
+								<th>Description</th>
+								<th>Example</th>
+								<th>Default</th>
+								<th>Required</th>
+							</tr>
+
+						</thead>
+						<tbody>
+							<tr>
+								<td>access_token</td>
+								<td> Access Token for API. Can be generated from API dashboard. </td>
+								<td> (32 Digits charectars)</td>
+								<td>None</td>
+								<td>YES</td>
+							</tr>
+						</tbody>
+					</table>	
+
+		</section>
+		<!-- /API document Auth Section -->
+
+
+
+		<!-- API document Getting Data Section -->
+		<section id="data">
+			<h3>Getting Data</h3>
+
+			<hr class="notop">
+				<p> With vaild Access Token and parameters API will provide JSON data. Here is the sample data </p>
+				
+				<pre>
+{
+	"total": 6905,
+	"per_page": 100,
+	"current_page": 1,
+	"last_page": 70,
+	"next_page_url": "http://api.realtybloc.ca/v1/listings/?page=2",
+	"prev_page_url": null,
+	"from": 1,
+	"to": 2,
+	"data": [
+		{
+			...
+		},
+		{
+			...
+		}
+	]
+}		
+				</pre>	
+
+		</section>
+		<!-- /API document Getting Data Section -->
+
+		<!-- API document Parameters Section -->
+		<section id="listings">
+			<h3>Get Listings</h3>
+
+			<p>
+				<b>API END POINT TO GET LISTINGS: </b>
+					<p><pre>http://api.realtybloc.ca/{v1}/listings</pre></p> 
+			</p>
+
+			<hr class="notop">
+				<p> API needs to have right parameters to get right data. Here is the list of available parameters. </p>
+				
+				<table class="rbtable">
+						<thead>
+							<tr>
+								<th>Parameter</th>
+								<th>Description</th>
+								<th>Example</th>
+								<th>Default</th>
+								<th>Required</th>
+							</tr>
+
+						</thead>
+						<tbody>
+							<tr>
+								<td>limit</td>
+								<td> Limit of Data return by the API. Only integer number is allowed. </td>
+								<td> 30</td>
+								<td>20</td>
+								<td>No</td>
+							</tr>
+
+							<tr>
+								<td>max_price</td>
+								<td> Maximum price of the listings we need. Only integer number is allowed. </td>
+								<td> 3000000</td>
+								<td>None</td>
+								<td>No</td>
+							</tr>
+
+							<tr>
+								<td>min_price</td>
+								<td> Minimum price of the listings we need. Only integer number is allowed. </td>
+								<td> 1000000</td>
+								<td>None</td>
+								<td>No</td>
+							</tr>
+
+							<tr>
+								<td>price</td>
+								<td> Listing with that specific Price. Only integer number is allowed. </td>
+								<td> 2500000</td>
+								<td>None</td>
+								<td>No</td>
+							</tr>
+
+							<tr>
+								<td>city</td>
+								<td> Name of the City to get listing of that specific City. </td>
+								<td> Maple Ridge</td>
+								<td>None</td>
+								<td>No</td>
+							</tr>
+
+							<tr>
+								<td>state</td>
+								<td> Name of the Province to get listing of that specific Province.  </td>
+								<td> British Columbia</td>
+								<td>None</td>
+								<td>No</td>
+							</tr>
+
+							<tr>
+								<td>address</td>
+								<td> Address or part of address. </td>
+								<td> 43 SUNSET ESTATES</td>
+								<td>None</td>
+								<td>No</td>
+							</tr>
+
+							<tr>
+								<td>bed</td>
+								<td> Number of Bedrooms. Only integer number is allowed. </td>
+								<td> 3</td>
+								<td>None</td>
+								<td>No</td>
+							</tr>
+
+							<tr>
+								<td>bath</td>
+								<td> Number of Bathrooms. Only integer number is allowed.  </td>
+								<td> 2</td>
+								<td>None</td>
+								<td>No</td>
+							</tr>
+
+							<tr>
+								<td>zip_code</td>
+								<td> Zip Code or PostalCode of any location to get data from that location. </td>
+								<td> V0N1V0</td>
+								<td>None</td>
+								<td>No</td>
+							</tr>
+
+							<tr>
+								<td>agent_id</td>
+								<td> Get data from any specific Agent. Only integer number is allowed. </td>
+								<td> 1432434</td>
+								<td>None</td>
+								<td>No</td>
+							</tr>
+
+							<tr>
+								<td>max_sqft</td>
+								<td> Maximum size of the listing in Sqft.</td>
+								<td> 217800</td>
+								<td>None</td>
+								<td>No</td>
+							</tr>
+
+							<tr>
+								<td>min_sqft</td>
+								<td> Minium size of the listing in Sqft.</td>
+								<td> 15800</td>
+								<td>None</td>
+								<td>No</td>
+							</tr>
+
+							<tr>
+								<td>property_type</td>
+								<td> Type of Listing. Multile types allowed separated by comma. Available Options: <br/><br/> <span class="block">sf</span> = Single Family<br/><span class="block"> mf </span>= Multi Family<br/><span class="block">land</span> = Vacant Land<br/><span class="block">condo</span> = Condo<br/><span class="block">am</span> = Appartment<br/><span class="block">com</span> = Commercial<br/> <span class="block">rent</span> = Rental<br/> <span class="block">bs</span> = Business<br/> <span class="block">ofc</span> = Office<br/> <span class="block">rtl</span> = Retail<br/> <span class="block">rec</span> = Recreational
+								</td>
+								<td> condo,com</td>
+								<td>None</td>
+								<td>No</td>
+							</tr>
+
+
+							<tr>
+								<td>type</td>
+								<td> Type of Listing. Multile types allowed separated by comma. Available Options: <br/><br/> 
+								<span class="block">Apartment</span> <br/>
+								<span class="block">Commercial Apartment</span> <br/>
+								<span class="block">Duplex</span> <br/>
+								<span class="block">Fourplex</span> <br/>
+								<span class="block">House</span> <br/>
+								<span class="block">Mobile Home</span> <br/>
+								<span class="block">Modular</span> <br/>
+								<span class="block">Recreational</span> <br/>
+								<span class="block">Row / Townhouse</span> <br/>
+								<span class="block">Triplex</span> <br/>
+								</td>
+								<td> condo,com</td>
+								<td>None</td>
+								<td>No</td>
+							</tr>
+
+							<tr>
+								<td>transaction_type</td>
+								<td> Transaction Type of the listing, For Sale or For Rent. </td>
+								<td> For Sale</td>
+								<td>None</td>
+								<td>No</td>
+							</tr>
+
+							<tr>
+								<td>max_year_built</td>
+								<td> Most old build listing return by the API. Only Year is allowed. </td>
+								<td> 1960</td>
+								<td>None</td>
+								<td>No</td>
+							</tr>
+
+							<tr>
+								<td>min_year_built</td>
+								<td> Minimum year of building for the listing. Only Year is allowed. </td>
+								<td> 2007</td>
+								<td>None</td>
+								<td>No</td>
+							</tr>
+
+							<tr>
+								<td>dayson</td>
+								<td> The latest updated day for the listing. if 200, then property updated within last 200 days will retrun.</td>
+								<td> 30</td>
+								<td>None</td>
+								<td>No</td>
+							</tr>
+
+							<tr>
+								<td>lat</td>
+								<td> Latitude of the center point. lat, lng, radius and unit parameters depends on each other. </td>
+								<td> 59.46561</td>
+								<td>None</td>
+								<td>No</td>
+							</tr>
+
+							<tr>
+								<td>lng</td>
+								<td> Longitude of the center point. lat, lng, radius and unit parameters depends on each other. </td>
+								<td> -119.560607</td>
+								<td>None</td>
+								<td>No</td>
+							</tr>
+
+							<tr>
+								<td>radius</td>
+								<td> Radius from the center points. lat, lng, radius and unit parameters depends on each other. </td>
+								<td> 2</td>
+								<td>1(km)</td>
+								<td>No</td>
+							</tr>
+
+							<tr>
+								<td>unit</td>
+								<td> Unit for the radious. mile and km available. lat, lng, radius and unit parameters depends on each other. </td>
+								<td> mile</td>
+								<td>km</td>
+								<td>No</td>
+							</tr>
+
+							<tr>
+								<td>s</td>
+								<td> S is for Seach Key. It can search Address, ID, City, State, Public Remark everything. </td>
+								<td>North Vancuver</td>
+								<td>None</td>
+								<td>No</td>
+							</tr>
+
+						</tbody>
+					</table>	
+
+					<p>
+				<b>API END POINT TO GET LISTINGS BY OFFICE ID: </b>
+					<p><pre>http://api.realtybloc.ca/{v1}/listingsbyoffice</pre></p> 
+			</p>
+
+			<hr class="notop">
+				<p> API needs to have right parameters to get right data. Here is the list of available parameters. </p>
+				
+				<table class="rbtable">
+						<thead>
+							<tr>
+								<th>Parameter</th>
+								<th>Description</th>
+								<th>Example</th>
+								<th>Default</th>
+								<th>Required</th>
+							</tr>
+
+						</thead>
+						<tbody>
+							<tr>
+								<td>limit</td>
+								<td> Limit of Data return by the API. Only integer number is allowed. </td>
+								<td> 30</td>
+								<td>20</td>
+								<td>No</td>
+							</tr>
+
+							<tr>
+								<td>office_ids</td>
+								<td>Comma separated Office ID's. Only integer number is allowed. </td>
+								<td> 110461</td>
+								<td>N/A</td>
+								<td>No</td>
+							</tr>
+
+							
+
+						</tbody>
+					</table>
+
+		</section>
+		<!-- /API document Get Listings Section -->
+
+		<!-- API document Get Agents Section -->
+		<section id="agents">
+			<h3>Get Agents</h3>
+
+			<p>
+				<b>API END POINT TO GET AGENTS: </b>
+					<p><pre>http://api.realtybloc.ca/{v1}/agents</pre></p> 
+			</p>
+
+			
+			<hr class="notop">
+				<p> API needs to have right parameters to get right data. Here is the list of available parameters. </p>
+				
+				<table class="rbtable">
+						<thead>
+							<tr>
+								<th>Parameter</th>
+								<th>Description</th>
+								<th>Example</th>
+								<th>Default</th>
+								<th>Required</th>
+							</tr>
+
+						</thead>
+						<tbody>
+							<tr>
+								<td>limit</td>
+								<td> Limit of Data return by the API. Only integer number is allowed. </td>
+								<td> 30</td>
+								<td>20</td>
+								<td>No</td>
+							</tr>
+
+							<tr>
+								<td>with_listing</td>
+								<td>0 or 1. 1 will retrun agent list with their listings </td>
+								<td>0</td>
+								<td>0</td>
+								<td>No</td>
+							</tr>
+
+							
+
+						</tbody>
+					</table>
+
+		</section>
+		<!-- /API document Get Agents Section -->
+
+		<!-- API document Sorting Section -->
+		<section id="sorting">
+			<h3>Sorting Data</h3>
+
+			<hr class="notop">
+				<p> API allows to Sort data by specific Order. It will need two parameters. <span class="block">sort</span> and <span class="block">order</span> </p>
+				
+				<table class="rbtable">
+						<thead>
+							<tr>
+								<th>Parameter</th>
+								<th>Description</th>
+								<th>Example</th>
+								<th>Default</th>
+								<th>Required</th>
+							</tr>
+
+						</thead>
+						<tbody>
+							<tr>
+								<td>sort</td>
+								<td> sort with specific field Like Price or Size. Available Options: <br/><br/><span class="block">price</span><span class="block">bed</span> <span class="block">bath</span><span class="block">size</span><span class="block">built_date</span> <span class="block">updated_at</span> </td>
+								<td> price</td>
+								<td>ID</td>
+								<td>No</td>
+							</tr>
+
+							<tr>
+								<td>order</td>
+								<td> Sorting Order. Ascending and Descending is available. <br/><br/>
+								asc = Ascending ( Sort returned data by ascending order )<br/>
+								desc = Descending ( Sort returned data by descending order )</td>
+								<td> desc</td>
+								<td>asc</td>
+								<td>No</td>
+							</tr>
+						</tbody>
+					</table>	
+
+		</section>
+		<!-- /API document Sorting Section -->
+
+		<!-- API document Return Section -->
+		<section id="return_type">
+			<h3>Return Type</h3>
+
+			<hr class="notop">
+				<p> API will return data as JSON format. Here is the example of data node.</p>
+				
+				<pre>"data": [
+	{
+		"crea_id": 13924942,
+		"LastUpdated": "2013-12-21 14:23:36",
+		"ListingID": "V1039168",
+		"agent_id": 1431530,
+		"Photos": [
+			"http://realtybloc.s3.amazonaws.com/13924942_1.jpg",
+			"http://realtybloc.s3.amazonaws.com/13924942_2.jpg",
+			"http://realtybloc.s3.amazonaws.com/13924942_3.jpg",
+			"http://realtybloc.s3.amazonaws.com/13924942_4.jpg",
+			"http://realtybloc.s3.amazonaws.com/13924942_5.jpg",
+			"http://realtybloc.s3.amazonaws.com/13924942_6.jpg"
+		],
+		"Price": 2900000,
+		"PropertyType": "Vacant Land",
+		"PublicRemarks": "\"Albion Development Property\" ...",
+		"TransactionType": "For sale",
+		"Type": null,
+		"StreetAddress": "24487 112TH AV",
+		"AddressLine1": "24487 112TH AV",
+		"City": "Maple Ridge",
+		"PostalCode": "V2W1H5",
+		"Province": "British Columbia",
+		"Country": "Canada",
+		"Lat": "49.205778",
+		"Lng": "-122.568465",
+		"Board": 89,
+		"FireplacePresent": "False",
+		"BathroomTotal": null,
+		"BedroomsTotal": null,
+		"Amenities": null,
+		"Appliances": null,
+		"ArchitecturalStyle": null,
+		"BasementDevelopment": null,
+		"BasementFeatures": null,
+		"BasementType": null,
+		"ConstructedDate": null,
+		"ConstructionStyleAttachment": null,
+		"FireplaceTotal": null,
+		"FireProtection": null,
+		"Fixture": null,
+		"SizeInterior": null,
+		"SizeTotal": null,
+		"Acreage": "false",
+		"SizeTotalText": null,
+		"SizeFrontage": null,
+		"SizeIrregular": null,
+		"Features": null,
+		"AmmenitiesNearBy": null,
+		"MaintenanceFee": null,
+		"MaintenanceFeePaymentUnit": null,
+		"MunicipalId": "009-242-261",
+		"OwnershipType": "Freehold",
+		"UtilitiesAvailable": null,
+		"MoreInformationLink": "http://www.realtor.ca/PropertyDetails.aspx?PropertyId=13924942",
+		"ViewType": null,
+		"WaterFrontType": null,
+		"agent": {
+			"agent_id": "1431530",
+			"Name": "Ron Antalek",
+			"Phone": [
+				"(604) 351-3261",
+				"(604) 466-2868"
+			],
+			"Website": null,
+			"OfficeID": "52337",
+			"OfficeName": "RE/MAX LifeStyles Realty",
+			"StreetAddress": "22308 Dewdney Trunk Road",
+			"AddressLine1": "22308 Dewdney Trunk Road",
+			"City": "Maple Ridge",
+			"PostalCode": "V2X3J2",
+			"OfficeWebsite": "http://www.remax-ridgemeadows-bc.com",
+			"Franchisor": "Re/Max of Western Canada",
+			"Position": null
+		}
+	}
+	]
+						
+				</pre>	
+
+		</section>
+		<!-- /API document Return Type Section -->
+
+
+		<!-- API document Example Section -->
+		<section id="example">
+			<h3>Example Call</h3>
+
+			<hr class="notop">
+				<p> Here is the simplest form of API call </p>
+				
+				<pre> http://api.realtybloc.ca/v1/listings?access_token=ACCESS_TOKEN&amp;limit=30&amp;city=Sechelt&amp;property_type=sf,vc</pre> 
+
+		</section>
+		<!-- /API document Sorting Section -->
+
+
+
+
+
+
+	</div> <!-- END #documenter_content -->
+
+</body>	
+	<script src="js/jquery.1.6.4.js"></script>
+	<script src="js/jquery.scrollTo-1.4.2-min.js"></script>
+	<script src="js/jquery.easing.js"></script>
+	<script>document.createElement('section');var duration=913,easing='easeOutQuart';</script>
+	<script src="js/script.js"></script>
+</html>
